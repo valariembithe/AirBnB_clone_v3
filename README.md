@@ -156,7 +156,9 @@ No known bugs at this time.
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
-
+Valarie Mbithe - [Github] (https://github.com/valariembithe)
 Second part of Airbnb: Joann Vuong
+
+Making a RESTful API for HBNB
 ## License
 Public Domain. No copy write protection. 
