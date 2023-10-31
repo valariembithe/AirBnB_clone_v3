@@ -6,9 +6,10 @@ from flask import Flask, jsonify, request, abort
 from models import storage
 from api.v1.views import app_views
 from models.place import Place
-from models.amenities import Amenity
+from models.amenity import Amenity
 
-@app_views.route('/places/<place_id>/amenities', methods=['GET'], strict_slashes=False)
+@app_views.route('/places/<place_id>/amenities', 
+        methods=['GET'], strict_slashes=False)
 def get_amenities(place_id):
     """ Retrieves the list of all Amenity objects of a Place """
     place = storage.get(Place, place_id)
