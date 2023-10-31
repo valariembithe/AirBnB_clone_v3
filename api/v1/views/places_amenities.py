@@ -18,13 +18,18 @@ def get_amenities(place_id):
     amenities = [amenity.to_dict() for amenity in place.amenities]
     return jsonify(amenities)
 
-@app_views.route('/places/<place_id>/amenities/<amenity_id>', 
-        methods=['DELETE'], strict_slashes=False)
-def delete_amenity(place_id, amenity_id):
-    """ Deletes a Amenity object to a Place """
-    place = storage.get(Place, place_id)
-    if place is None:
+@app_views.route('/amenities/<amenity_id>', methods=['GET'], strict_slashes=False)
+def get_amenity(amenity_id):
+    """ Retrieve one Amenity """
+    amentity = storage.get(Amenity, amenity_id)
+    if amenity is None:
         abort(404)
+    return jsonify(amenity.to_dict)
+    
+
+@app_views.route('/amenities/<amenity_id>', methods=['DELETE'], strict_slashes=False)
+def delete_amenity(amenity_id):
+    """ Deletes a Amenity object to a Place """
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
         abort(404)
@@ -32,11 +37,10 @@ def delete_amenity(place_id, amenity_id):
         abort(404)
     storage.delete(amenity)
     storage.save()
-    return jsonify({}),200
+    return jsonify({}), 200
 
-@app_views.route('/places/<place_id>/amenities/<amenity_id>', 
-        methods=['POST'], strict_slashes=False)
-def create_amenity(place_id, amenity_id):
+@app_views.route('/places/<place_id>/amenities', methods=['POST'], strict_slashes=False)
+def create_amenity(place_id):
     """ Link a Amenity object to a Place: POST """
     place = storage.get(Place, place_id)
     if place is None:
